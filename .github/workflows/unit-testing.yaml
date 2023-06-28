@@ -17,6 +17,7 @@ jobs:
 
       - name: Test with unittest
         run: python3 -m unittest weadar_test.py
+ 
       - name: Check code coverage
         run: |
             python3 coverage run -m unittest weadar_test.py

@@ -1,7 +1,5 @@
 import unittest
-from weadar import Weadar
+import weadar
 
-class WeadarTest(unittest.TestCase):
-
-    def setUp(self):
-            self.weadar = Weadar()
+if __name__ == '__main__':
+    unittest.main()
