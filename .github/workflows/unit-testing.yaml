@@ -16,15 +16,15 @@ jobs:
         run: python -m pip install --upgrade pip pytest
 
       - name: Test with unittest
-        run: python3 -m unittest weadar_test.py
+        run: python3 -m unittest weadar.py
       - name: Check code coverage
         run: |
-            python3 coverage run -m unittest weadar_test.py
+            python3 coverage run -m unittest weadar.py
             python3 coverage report
             python3 coverage html
 
-        - name: Archive code coverage HTML report
-            uses: actions/upload-artifact@v2
-            with:
-               name: code-coverage-report
-               path: htmlcov
+      - name: Archive code coverage HTML report
+          uses: actions/upload-artifact@v2
+          with:
+              name: code-coverage-report
+              path: htmlcov
