@@ -55,15 +55,18 @@ while True:
 
     selection=input("Please Select:") 
     if selection =='1': 
+        cast ={}
         print_header("Today's Overcast")
-        for row in weather_df['weather'].head(12).values:
-            print(f'{row[0]["main"]} {row[0]["description"]}')     
+        for row in weather_df[['dt','weather']].head(12).values: 
+            cast[row[0]] = {'main':row[1][0]["main"], 'description':row[1][0]["description"]}
+            cast_df = pd.DataFrame.from_dict(cast, orient='index')
+        print(cast_df) 
     elif selection == '2': 
         print_header("Today's Windspeed")
-        print(weather_df['wind_speed'].head(12))
+        print(weather_df[['dt','wind_speed']].head(12))
     elif selection == '3':
         print_header("Humidity for today")
-        print(weather_df['humidity'].head(12)) 
+        print(weather_df[['dt','humidity']].head(12)) 
     elif selection == '4': 
         print_header("Enter New Location:")
         get_weather()
