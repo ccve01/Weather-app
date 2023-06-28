@@ -1,5 +1,5 @@
 import requests
-def makeRequest():
+class Weadar:
         API_KEY = '135dd2bd94df391d40c1b49f4eecf562'
 
         weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API_KEY}"
@@ -13,5 +13,4 @@ def makeRequest():
 
         print("Weather: Status", weather_response.status_code)
         print(weather_response.json())
-
-print(makeRequest())
+ 
