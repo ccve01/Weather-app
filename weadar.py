@@ -30,8 +30,6 @@ def get_location(zip, country):
     lat = geocode_response.json().get('lat')
     lon = geocode_response.json().get('lon')
     City_name = geocode_response.json().get('name')
-    print('lat ', lat)
-    print('lon ', lon)
     return [lat, lon]
 
 
