@@ -20,13 +20,16 @@ jobs:
       
       - name: Install pandas
         run: pip install pandas
+      
+      - name: Install datetime
+        run: pip install datetime
 
       - name: Test with unittest
-        run: python3 -m unittest weadar_test.py
+        run: python3 -m unittest test_weadar.py
  
       - name: Check code coverage
         run: |
-            python3 coverage run -m unittest weadar_test.py
+            python3 coverage run -m unittest test_weadar.py
             python3 coverage report
             python3 coverage html
 
