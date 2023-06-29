@@ -25,11 +25,11 @@ jobs:
         run: pip install datetime
 
       - name: Test with unittest
-        run: python3 -m unittest test.py
+        run: python3 -m unittest test_weadar.py
  
       - name: Check code coverage
         run: |
-            python3 coverage run -m unittest test.py
+            python3 coverage run -m unittest test_weadar.py
             python3 coverage report
             python3 coverage html
 

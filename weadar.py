@@ -12,10 +12,11 @@ def get_zipcode(text):
 def get_countrycode(text):
     return input(text)
 
-def get_location():
+def get_location(zip, country):
         global City_name
-        zipcode = get_zipcode('Enter your zip code: ')
-        countrycode = get_countrycode('Enter your country code: ')
+
+        zipcode = zip
+        countrycode = country
 
         geocode_url = f'http://api.openweathermap.org/geo/1.0/zip?zip={zipcode},{countrycode}&appid={API_KEY}'
 
@@ -28,7 +29,7 @@ def get_location():
 
 def get_weather():
         global weather_df
-        location = get_location()
+        location = get_location(get_zipcode('Enter Zip Code: '), get_countrycode('Enter Country Code: '))
         weather_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={location[0]}&lon={location[1]}&exclude=minutely,daily&appid={API_KEY}&units=imperial"
 
         weather_response = requests.get(weather_url)
