@@ -48,38 +48,39 @@ def print_header(title):
         print('-' * len(title))
 
 
-menu = {}
-menu['1']="Descriptions" 
-menu['2']="Wind speed"
-menu['3']="Humidity"
-menu['4']="Enter New Location"
-menu['5']="Exit"
-print_header("Enter your location")
-get_weather()
-while True: 
-        options=menu.keys()
-        print_header('Menu Options')
-        for entry in options: 
-            print(f'{entry}: {menu[entry]}')
+if __name__ == '__main__':
+    menu = {}
+    menu['1']="Descriptions" 
+    menu['2']="Wind speed"
+    menu['3']="Humidity"
+    menu['4']="Enter New Location"
+    menu['5']="Exit"
+    print_header("Enter your location")
+    get_weather()
+    while True: 
+            options=menu.keys()
+            print_header('Menu Options')
+            for entry in options: 
+                print(f'{entry}: {menu[entry]}')
 
-        selection=input("Please Select:") 
-        if selection =='1': 
-            cast ={}
-            print_header("Today's Overcast")
-            for row in weather_df[['dt','weather']].head(12).values: 
-                cast[row[0]] = {'main':row[1][0]["main"], 'description':row[1][0]["description"]}
-                cast_df = pd.DataFrame.from_dict(cast, orient='index')
-            print(cast_df) 
-        elif selection == '2': 
-            print_header("Today's Windspeed")
-            print(weather_df[['dt','wind_speed']].head(12))
-        elif selection == '3':
-            print_header("Humidity for today")
-            print(weather_df[['dt','humidity']].head(12)) 
-        elif selection == '4': 
-            print_header("Enter New Location:")
-            get_weather()
-        elif selection == '5':
-            break
-        else: 
-            print() 
+            selection=input("Please Select:") 
+            if selection =='1': 
+                cast ={}
+                print_header("Today's Overcast")
+                for row in weather_df[['dt','weather']].head(12).values: 
+                    cast[row[0]] = {'main':row[1][0]["main"], 'description':row[1][0]["description"]}
+                    cast_df = pd.DataFrame.from_dict(cast, orient='index')
+                print(cast_df) 
+            elif selection == '2': 
+                print_header("Today's Windspeed")
+                print(weather_df[['dt','wind_speed']].head(12))
+            elif selection == '3':
+                print_header("Humidity for today")
+                print(weather_df[['dt','humidity']].head(12)) 
+            elif selection == '4': 
+                print_header("Enter New Location:")
+                get_weather()
+            elif selection == '5':
+                break
+            else: 
+                print() 
